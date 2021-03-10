@@ -9,17 +9,18 @@ def main():
     AvitoParser.AvitoObj.set_log_path('logfile.txt')
     AvitoParser.AvitoObj.set_exel_path('exelout.xlsx')
 
+    #получение одной страницы и запись ее в xlsx
     AvitoParser.get_info(AvitoParser.get_html(url))
     AvitoParser.AvitoObj.write_exel_data()
 
-    # получения количества страниц и парсинг их в цикле
-    # total_pages = (
-    #     AvitoParser.get_total_pages(
-    #         AvitoParser.get_html(url)))
-    # for i in range(2, total_pages):
-    #     url_gen = url + "?p="+str(i)
-    #     AvitoParser.get_info(AvitoParser.get_html(url_gen))
-    # AvitoParser.AvitoObj.write_exel_data()
+    #получения количества страниц и парсинг их в цикле
+    total_pages = (
+        AvitoParser.get_total_pages(
+            AvitoParser.get_html(url)))
+    for i in range(2, total_pages):
+        url_gen = url + "?p="+str(i)
+        AvitoParser.get_info(AvitoParser.get_html(url_gen))
+    AvitoParser.AvitoObj.write_exel_data()
 
 
 # Press the green button in the gutter to run the script.
